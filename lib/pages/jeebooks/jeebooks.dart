@@ -1,0 +1,56 @@
+// ignore_for_file: prefer_const_constructors
+
+import 'package:flutter/material.dart';
+import '../../components/my_appbar.dart';
+import 'maths_jeebooks.dart';
+import 'phy_jeebooks.dart';
+import 'chem_jeebooks.dart';
+
+class JeeBooks extends StatefulWidget {
+  const JeeBooks({Key? key}) : super(key: key);
+
+  @override
+  State<JeeBooks> createState() => _JeeBooksState();
+}
+
+class _JeeBooksState extends State<JeeBooks> {
+  int currentIndex = 0;
+  PageController controller = PageController();
+  List<Widget> pages = [PhyJeeBooks(), ChemJeeBooks(), MathsJeeBooks()];
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) => Scaffold(
+        appBar: MyAppBar(
+            title: currentIndex == 0
+                ? 'Physics JEE Books'
+                : currentIndex == 1
+                    ? 'Chemistry JEE Books'
+                    : 'Maths JEE Books'),
+        bottomNavigationBar: BottomNavigationBar(
+            onTap: ((index) => setState(() {
+                  currentIndex = index;
+                  controller.animateToPage(index,
+                      curve: Curves.easeOut,
+                      duration: const Duration(milliseconds: 300));
+                })),
+            currentIndex: currentIndex,
+            items: const [
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.settings), label: 'Physics'),
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.science_outlined), label: 'Chemistry'),
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.functions), label: 'Maths'),
+            ]),
+        body: PageView(
+            children: pages,
+            controller: controller,
+            onPageChanged: (page_index) =>
+                setState(() => currentIndex = page_index)),
+      );
+}
