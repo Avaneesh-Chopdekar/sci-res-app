@@ -19,9 +19,13 @@ class _ChemJeeBooksState extends State<ChemJeeBooks> {
     'https://drive.google.com/file/d/111zT7mROCu9YSfnWeo1iTZOIe2vTr8W6/view', // Errorless
     'https://1drv.ms/b/s!AmuzjkvH34D_fLN2ME_ypuHQK1g', // M.S.Chouhan JEE
   ];
+  final bools = [false, false, true];
   @override
   Widget build(BuildContext context) => ListView.builder(
       itemCount: bookNames.length,
-      itemBuilder: (context, index) =>
-          ListItem(name: bookNames[index], index: index, url: urls[index]));
+      itemBuilder: (context, index) => ListItem(
+          name: bookNames[index],
+          index: index,
+          url: urls[index],
+          isOneDrive: bools[index]));
 }
