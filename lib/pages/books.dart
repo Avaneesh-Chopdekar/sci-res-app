@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../components/my_appbar.dart';
 import '../components/big_card.dart';
 import 'stateboard/stateboard.dart';
 import 'jeebooks/jeebooks.dart';
@@ -27,7 +26,7 @@ class _BooksState extends State<Books> {
       )
     ];
     return Scaffold(
-      appBar: const MyAppBar(title: 'Books'),
+      appBar: AppBar(title: Text('Books')),
       body: Center(
         child: MediaQuery.of(context).orientation == Orientation.portrait
             ? Column(

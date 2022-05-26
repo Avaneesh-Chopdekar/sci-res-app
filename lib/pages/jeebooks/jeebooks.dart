@@ -1,7 +1,4 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
-import '../../components/my_appbar.dart';
 import 'maths_jeebooks.dart';
 import 'phy_jeebooks.dart';
 import 'chem_jeebooks.dart';
@@ -25,26 +22,25 @@ class _JeeBooksState extends State<JeeBooks> {
 
   @override
   Widget build(BuildContext context) => Scaffold(
-        appBar: MyAppBar(
-            title: currentIndex == 0
+        appBar: AppBar(
+            title: Text(currentIndex == 0
                 ? 'Physics JEE Books'
                 : currentIndex == 1
                     ? 'Chemistry JEE Books'
-                    : 'Maths JEE Books'),
-        bottomNavigationBar: BottomNavigationBar(
-            onTap: ((index) => setState(() {
+                    : 'Maths JEE Books')),
+        bottomNavigationBar: NavigationBar(
+            onDestinationSelected: ((index) => setState(() {
                   currentIndex = index;
                   controller.animateToPage(index,
                       curve: Curves.easeOut,
                       duration: const Duration(milliseconds: 300));
                 })),
-            currentIndex: currentIndex,
-            items: const [
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.settings), label: 'Physics'),
-              BottomNavigationBarItem(
+            selectedIndex: currentIndex,
+            destinations: const [
+              NavigationDestination(icon: Icon(Icons.bolt), label: 'Physics'),
+              NavigationDestination(
                   icon: Icon(Icons.science_outlined), label: 'Chemistry'),
-              BottomNavigationBarItem(
+              NavigationDestination(
                   icon: Icon(Icons.functions), label: 'Maths'),
             ]),
         body: PageView(

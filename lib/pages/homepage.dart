@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:quick_actions/quick_actions.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'jeebooks/jeebooks.dart';
 import 'stateboard/stateboard.dart';
 import 'books.dart';
 import 'more_info.dart';
 import 'pyqs/pyqs.dart';
 import '../components/big_card.dart';
-import '../components/my_appbar.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key}) : super(key: key);
@@ -16,8 +16,11 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  bool isDarkMode = false;
+  // late SharedPreferences preferences;
   void initState() {
     super.initState();
+    // init();
     QuickActions().setShortcutItems([
       ShortcutItem(type: 'jee-books', localizedTitle: 'Jee Books'),
       ShortcutItem(type: 'state-books', localizedTitle: 'Stateboard Books'),
@@ -37,6 +40,10 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  // Future init() async {
+  //   preferences = await SharedPreferences.getInstance();
+  // }
+
   @override
   Widget build(BuildContext context) {
     const children = const [
@@ -52,9 +59,24 @@ class _MyHomePageState extends State<MyHomePage> {
       )
     ];
     return Scaffold(
-      appBar: MyAppBar(
-          title: 'Science Resources',
+      appBar: AppBar(
+          title: Text('Science Resources'),
           centerTitle: true,
+          // actions: [
+          //   IconButton(
+          //       icon: Icon(isDarkMode
+          //           ? Icons.light_mode_outlined
+          //           : Icons.dark_mode_outlined),
+          //       onPressed: () async {
+          //         preferences.setBool('isDarkMode', false);
+          //         bool? isDarkMode = preferences.getBool('isDarkMode');
+          //         if (isDarkMode == null) return;
+          //         setState(() {
+          //           isDarkMode = !isDarkMode;
+          //           this.isDarkMode = isDarkMode;
+          //         });
+          //       })
+          // ],
           leading: IconButton(
               onPressed: () => Navigator.push(context,
                   MaterialPageRoute(builder: ((context) => const MoreInfo()))),

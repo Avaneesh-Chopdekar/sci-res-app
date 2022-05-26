@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../components/my_appbar.dart';
 
 class MoreInfo extends StatelessWidget {
   const MoreInfo({Key? key}) : super(key: key);
@@ -16,7 +15,7 @@ class MoreInfo extends StatelessWidget {
       'This app is made by Avaneesh Chopdekar.',
     ];
     return Scaffold(
-      appBar: const MyAppBar(title: 'More Info'),
+      appBar: AppBar(title: Text('More Info')),
       body: Padding(
         padding: const EdgeInsets.all(4),
         child: ListView.builder(

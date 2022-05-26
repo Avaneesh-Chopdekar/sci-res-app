@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'eleven_state.dart';
 import 'twelve_state.dart';
-import '../../components/my_appbar.dart';
 
 class StateBoard extends StatefulWidget {
   const StateBoard({Key? key}) : super(key: key);
@@ -23,23 +22,22 @@ class _StateBoardState extends State<StateBoard> {
 
   @override
   Widget build(BuildContext context) => Scaffold(
-        appBar: MyAppBar(
-          title: currentIndex == 0
-              ? '11th Stateboard Books'
-              : '12th Stateboard Books',
-        ),
-        bottomNavigationBar: BottomNavigationBar(
-            onTap: ((index) => setState(() {
+        appBar: AppBar(
+            title: Text(
+          currentIndex == 0 ? '11th Stateboard Books' : '12th Stateboard Books',
+        )),
+        bottomNavigationBar: NavigationBar(
+            onDestinationSelected: ((index) => setState(() {
                   currentIndex = index;
                   controller.animateToPage(index,
                       curve: Curves.easeOut,
                       duration: const Duration(milliseconds: 300));
                 })),
-            currentIndex: currentIndex,
-            items: const [
-              BottomNavigationBarItem(
+            selectedIndex: currentIndex,
+            destinations: const [
+              NavigationDestination(
                   icon: Icon(Icons.child_care), label: '11th'),
-              BottomNavigationBarItem(icon: Icon(Icons.elderly), label: '12th'),
+              NavigationDestination(icon: Icon(Icons.elderly), label: '12th'),
             ]),
         body: PageView(
           children: pages,
