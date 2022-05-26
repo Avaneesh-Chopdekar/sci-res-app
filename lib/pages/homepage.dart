@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:quick_actions/quick_actions.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+// import 'package:shared_preferences/shared_preferences.dart';
 import 'jeebooks/jeebooks.dart';
 import 'stateboard/stateboard.dart';
-import 'books.dart';
 import 'more_info.dart';
 import 'pyqs/pyqs.dart';
 import '../components/big_card.dart';
@@ -48,8 +47,13 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     const children = const [
       BigCard(
-        text: 'Books',
-        page: Books(),
+        text: 'State',
+        page: StateBoard(),
+        bgImage: 'assets/stateboard.webp',
+      ),
+      BigCard(
+        text: 'JEE',
+        page: JeeBooks(),
         bgImage: 'assets/books.webp',
       ),
       BigCard(

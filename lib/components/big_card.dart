@@ -19,11 +19,11 @@ class BigCard extends StatelessWidget {
                 DecorationImage(image: AssetImage(bgImage), fit: BoxFit.cover),
             borderRadius: BorderRadius.circular(12)),
         height: MediaQuery.of(context).orientation == Orientation.portrait
-            ? 200
+            ? 150
             : MediaQuery.of(context).size.height - 30,
         width: MediaQuery.of(context).orientation == Orientation.portrait
             ? MediaQuery.of(context).size.width - 80
-            : 300,
+            : 180,
         child: InkWell(
           onTap: () {
             Navigator.push(
