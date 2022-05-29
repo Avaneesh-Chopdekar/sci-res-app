@@ -10,7 +10,7 @@ class MathsPyqs extends StatefulWidget {
 
 class _MathsPyqsState extends State<MathsPyqs> {
   final List<String> chapters = <String>[
-    '41 Years Maths PYQs',
+    '43 Years Maths PYQs',
     'Application of Derivatives',
     'Area Under Curves',
     'Binomial Theorem',
@@ -46,7 +46,7 @@ Inequations''',
     'Vector Algebra',
   ];
   final List links = [
-    'https://drive.google.com/file/d/1BGkca6lKW_NWMQ-9WIFx8ydUIKUM-bfq/view', // 41 Years Maths PYQs
+    'https://drive.google.com/file/d/1_1n7koHARxWT0CgY4YPLzLxYAcFUNZkr/view', // 43 Years Maths PYQs
     'https://drive.google.com/file/d/11kUM0KWA9LO3nJFA2WPpABKsLJboFmxc/view', // Application of derivative
     'https://drive.google.com/file/d/18EALOMbMpcRMkX-h_ObVAQ9DBbFMlz66/view', // Area under the curve
     'https://drive.google.com/file/d/1GqBxgFrBIPjMVNHShupFhTkfujePJj6R/view', // Binomial Theorem

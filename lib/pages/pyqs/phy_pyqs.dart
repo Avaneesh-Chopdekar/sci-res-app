@@ -11,7 +11,7 @@ class PhyPyqs extends StatefulWidget {
 
 class _PhyPyqsState extends State<PhyPyqs> {
   final List<String> chapters = <String>[
-    '41 Years Physics PYQs',
+    '43 Years Physics PYQs',
     'Alternating Current',
     'Atomic Physics',
     'Capacitance',
@@ -45,7 +45,7 @@ class _PhyPyqsState extends State<PhyPyqs> {
     'Work Power and Energy',
   ];
   final List links = [
-    'https://drive.google.com/file/d/1G51o8x4xtreks5GV3bNAMT2y61C1hx8X/view', // 41 years PYQS Physics
+    'https://drive.google.com/file/d/1PWTjqqxPBiQzPE037cUk-_0XMNQSMUDU/view', // 43 years PYQS Physics
     'https://drive.google.com/file/d/1pc-5kaTjokouIkgehzTk97Zo2bwMYN_d/view', // Alternating current
     'https://drive.google.com/file/d/1Foe0tK8YXEh1ndLhPQwu1apPu66OwKtX/view', // Atomic physics
     'https://drive.google.com/file/d/1h1s2cJpQiBV8T9d2pcZOwmRanjaHa9iX/view', // Capacitance

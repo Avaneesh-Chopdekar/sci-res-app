@@ -10,7 +10,7 @@ class ChemPyqs extends StatefulWidget {
 
 class _ChemPyqsState extends State<ChemPyqs> {
   final List chapters = [
-    '41 Years Chemistry PYQs',
+    '43 Years Chemistry PYQs',
     'Alcohols Phenols and Ethers',
     'Aldehydes and Ketones',
     'Aromatic Compounds',
@@ -51,7 +51,7 @@ Organic Compounds''',
     'Thermodynamics',
   ];
   final List links = [
-    'https://drive.google.com/file/d/1QxjYeauaI18xvZ36qloDz9ikIjFxXkPh/view', // 41 Years Chem PYQs
+    'https://drive.google.com/file/d/1TZbmjf151uVS4DUysfSs5MCjBSM_wVP9/view', // 43 Years Chem PYQs
     'https://drive.google.com/file/d/1FwQXQOcXGRrb2lJU8URoO7cx0OP0e8WR/view', // Alcohols Phenol ether
     'https://drive.google.com/file/d/13H5MUhKFzj1ffbOr09FQ5WSTzHgIZ4Y0/view', // Aldehydes and ketones
     'https://drive.google.com/file/d/1_Is6rfKVQ3M1kSoH93qDTEZqMwsTYl2W/view', // Aromatic Compounds
