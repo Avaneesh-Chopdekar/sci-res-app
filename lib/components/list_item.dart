@@ -26,36 +26,42 @@ class ListItem extends StatelessWidget {
       Colors.tealAccent.shade100
     ];
     final color = _lightColors[index % _lightColors.length];
-    return Container(
-      margin: const EdgeInsets.all(10),
-      padding: const EdgeInsets.all(16),
-      decoration:
-          BoxDecoration(borderRadius: BorderRadius.circular(14), color: color),
-      child: InkWell(
-        onTap: () async {
-          if (!await launchUrl(
-            Uri.parse(url),
-            mode: LaunchMode.externalApplication,
-          )) {
-            throw 'Could not launch ${Uri.parse(url)}';
-          }
-        },
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Container(
-                width: 20,
-                height: 20,
-                child: Image.asset(
-                    'assets/${!isOneDrive ? 'gdrive' : 'onedrive'}.png')),
-            SizedBox(width: 10),
-            Text(
-              name,
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+    return Padding(
+      padding: const EdgeInsets.all(10),
+      child: Material(
+        color: color,
+        borderRadius: BorderRadius.circular(14),
+        clipBehavior: Clip.antiAliasWithSaveLayer,
+        child: InkWell(
+          splashColor: Colors.black12,
+          onTap: () async {
+            if (!await launchUrl(
+              Uri.parse(url),
+              mode: LaunchMode.externalApplication,
+            )) {
+              throw 'Could not launch ${Uri.parse(url)}';
+            }
+          },
+          child: Padding(
+            padding: const EdgeInsets.all(16),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Container(
+                    width: 20,
+                    height: 20,
+                    child: Image.asset(
+                        'assets/${!isOneDrive ? 'gdrive' : 'onedrive'}.png')),
+                SizedBox(width: 10),
+                Text(
+                  name,
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+                ),
+                Spacer(),
+                Icon(Icons.chevron_right)
+              ],
             ),
-            Spacer(),
-            Icon(Icons.chevron_right)
-          ],
+          ),
         ),
       ),
     );
