@@ -82,6 +82,7 @@ class _MyHomePageState extends State<MyHomePage> {
           //       })
           // ],
           leading: IconButton(
+              tooltip: 'More Info',
               onPressed: () => Navigator.push(context,
                   MaterialPageRoute(builder: ((context) => const MoreInfo()))),
               icon: const Icon(
