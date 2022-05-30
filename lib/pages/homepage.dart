@@ -1,7 +1,6 @@
 import 'package:clickable_list_wheel_view/clickable_list_wheel_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:quick_actions/quick_actions.dart';
-// import 'package:shared_preferences/shared_preferences.dart';
 import 'jeebooks/jeebooks.dart';
 import 'stateboard/stateboard.dart';
 import 'more_info.dart';
@@ -16,12 +15,9 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  bool isDarkMode = false;
   late FixedExtentScrollController controller;
-  // late SharedPreferences preferences;
   void initState() {
     super.initState();
-    // init();
     QuickActions().setShortcutItems([
       ShortcutItem(type: 'jee-books', localizedTitle: 'Jee Books'),
       ShortcutItem(type: 'state-books', localizedTitle: 'Stateboard Books'),
@@ -50,31 +46,12 @@ class _MyHomePageState extends State<MyHomePage> {
     super.dispose();
   }
 
-  // Future init() async {
-  //   preferences = await SharedPreferences.getInstance();
-  // }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
           title: Text('Science Resources'),
           centerTitle: true,
-          // actions: [
-          //   IconButton(
-          //       icon: Icon(isDarkMode
-          //           ? Icons.light_mode_outlined
-          //           : Icons.dark_mode_outlined),
-          //       onPressed: () async {
-          //         preferences.setBool('isDarkMode', false);
-          //         bool? isDarkMode = preferences.getBool('isDarkMode');
-          //         if (isDarkMode == null) return;
-          //         setState(() {
-          //           isDarkMode = !isDarkMode;
-          //           this.isDarkMode = isDarkMode;
-          //         });
-          //       })
-          // ],
           leading: IconButton(
               tooltip: 'More Info',
               onPressed: () => Navigator.push(context,
