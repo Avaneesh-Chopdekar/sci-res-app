@@ -9,6 +9,7 @@ class MathsPyqs extends StatefulWidget {
 }
 
 class _MathsPyqsState extends State<MathsPyqs> {
+  bool isAtoZ = true;
   final List<String> chapters = <String>[
     '43 Years Maths PYQs',
     'Application of Derivatives',
@@ -81,8 +82,28 @@ Inequations''',
     'https://drive.google.com/file/d/1ci4jk0f1omEygs_c0kO_dpqdzvp11WKI/view', // vector algebra
   ];
   @override
-  Widget build(BuildContext context) => ListView.builder(
-      itemCount: chapters.length,
-      itemBuilder: (context, index) =>
-          ListItem(name: chapters[index], index: index, url: links[index]));
+  Widget build(BuildContext context) => Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 14),
+            child: ElevatedButton.icon(
+                onPressed: () => setState(() => isAtoZ = !isAtoZ),
+                icon: Icon(Icons.swap_vert),
+                label: Text(isAtoZ ? 'Ascending' : 'Descending')),
+          ),
+          Expanded(
+            child: ListView.builder(
+                itemCount: chapters.length,
+                itemBuilder: (context, index) => ListItem(
+                    name: isAtoZ
+                        ? chapters[index]
+                        : chapters.reversed.toList()[index],
+                    index: index,
+                    url: isAtoZ
+                        ? links[index]
+                        : links.reversed.toList()[index])),
+          ),
+        ],
+      );
 }

@@ -9,6 +9,7 @@ class ChemPyqs extends StatefulWidget {
 }
 
 class _ChemPyqsState extends State<ChemPyqs> {
+  bool isAtoZ = true;
   final List chapters = [
     '43 Years Chemistry PYQs',
     'Alcohols Phenols and Ethers',
@@ -87,8 +88,28 @@ Organic Compounds''',
     'https://drive.google.com/file/d/1uGWRB1YoCgmgJnATzk0UbIkt-mswovc4/view', // Thermodynamics
   ];
   @override
-  Widget build(BuildContext context) => ListView.builder(
-      itemCount: chapters.length,
-      itemBuilder: (context, index) =>
-          ListItem(name: chapters[index], index: index, url: links[index]));
+  Widget build(BuildContext context) => Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 14),
+            child: ElevatedButton.icon(
+                onPressed: () => setState(() => isAtoZ = !isAtoZ),
+                icon: Icon(Icons.swap_vert),
+                label: Text(isAtoZ ? 'Ascending' : 'Descending')),
+          ),
+          Expanded(
+            child: ListView.builder(
+                itemCount: chapters.length,
+                itemBuilder: (context, index) => ListItem(
+                    name: isAtoZ
+                        ? chapters[index]
+                        : chapters.reversed.toList()[index],
+                    index: index,
+                    url: isAtoZ
+                        ? links[index]
+                        : links.reversed.toList()[index])),
+          ),
+        ],
+      );
 }

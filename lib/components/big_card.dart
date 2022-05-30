@@ -12,7 +12,13 @@ class BigCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(20),
+      padding: EdgeInsets.symmetric(
+        horizontal: MediaQuery.of(context).orientation == Orientation.portrait
+            ? 20
+            : 80,
+        vertical:
+            MediaQuery.of(context).orientation == Orientation.portrait ? 10 : 4,
+      ),
       child: Material(
         borderRadius: BorderRadius.circular(12),
         clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -25,12 +31,6 @@ class BigCard extends StatelessWidget {
           child: Ink.image(
             fit: BoxFit.cover,
             image: AssetImage(bgImage),
-            height: MediaQuery.of(context).orientation == Orientation.portrait
-                ? 150
-                : MediaQuery.of(context).size.height - 30,
-            width: MediaQuery.of(context).orientation == Orientation.portrait
-                ? MediaQuery.of(context).size.width - 80
-                : 180,
             child: Container(
               decoration: BoxDecoration(
                   color: Colors.black.withOpacity(0.7),
@@ -38,7 +38,7 @@ class BigCard extends StatelessWidget {
               child: Center(
                 child: Text(
                   text,
-                  style: const TextStyle(color: Colors.white, fontSize: 40),
+                  style: const TextStyle(color: Colors.white, fontSize: 50),
                 ),
               ),
             ),
