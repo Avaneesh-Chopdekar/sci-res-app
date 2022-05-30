@@ -78,6 +78,7 @@ class _MyHomePageState extends State<MyHomePage> {
           child: ListWheelScrollView(
             controller: controller,
             physics: FixedExtentScrollPhysics(),
+            onSelectedItemChanged: (index) {},
             itemExtent: 250,
             children: const [
               BigCard(
