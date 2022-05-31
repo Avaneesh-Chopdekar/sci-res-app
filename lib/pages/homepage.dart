@@ -98,7 +98,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+          padding: const EdgeInsets.only(bottom: 20, left: 16, right: 16),
           child: Row(
             children: [
               FloatingActionButton(
