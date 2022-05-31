@@ -1,4 +1,3 @@
-import 'package:clickable_list_wheel_view/clickable_list_wheel_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:quick_actions/quick_actions.dart';
 import 'jeebooks/jeebooks.dart';
@@ -16,6 +15,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   late FixedExtentScrollController controller;
+  int currentIndex = 1;
   void initState() {
     super.initState();
     QuickActions().setShortcutItems([
@@ -59,47 +59,77 @@ class _MyHomePageState extends State<MyHomePage> {
               icon: const Icon(
                 Icons.info_outline,
               ))),
-      body: Center(
-        child: ClickableListWheelScrollView(
-          itemHeight: 250,
-          scrollController: controller,
-          onItemTapCallback: (index) {
-            if (index == 0)
-              Navigator.push(context,
-                  MaterialPageRoute(builder: ((context) => StateBoard())));
-            if (index == 1)
-              Navigator.push(context,
-                  MaterialPageRoute(builder: ((context) => JeeBooks())));
-            if (index == 2)
-              Navigator.push(
-                  context, MaterialPageRoute(builder: ((context) => PYQs())));
-          },
-          itemCount: 3,
-          child: ListWheelScrollView(
-            controller: controller,
-            physics: FixedExtentScrollPhysics(),
-            onSelectedItemChanged: (index) {},
-            itemExtent: 250,
-            children: const [
-              BigCard(
-                text: 'State',
-                page: StateBoard(),
-                bgImage: 'assets/stateboard.webp',
+      body: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
+        Expanded(
+          child: Center(
+            child: GestureDetector(
+              onTap: () => currentIndex == 1
+                  ? Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => JeeBooks()))
+                  : currentIndex == 2
+                      ? Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => PYQs()))
+                      : Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => StateBoard())),
+              child: ListWheelScrollView(
+                controller: controller,
+                physics: FixedExtentScrollPhysics(),
+                onSelectedItemChanged: (newValue) =>
+                    setState(() => currentIndex = newValue),
+                itemExtent: 250,
+                children: const [
+                  BigCard(
+                    text: 'State',
+                    bgImage: 'assets/stateboard.webp',
+                  ),
+                  BigCard(
+                    text: 'JEE',
+                    bgImage: 'assets/books.webp',
+                  ),
+                  BigCard(
+                    text: 'PYQs',
+                    bgImage: 'assets/pyqs.webp',
+                  ),
+                ],
               ),
-              BigCard(
-                text: 'JEE',
-                page: JeeBooks(),
-                bgImage: 'assets/books.webp',
-              ),
-              BigCard(
-                text: 'PYQs',
-                page: PYQs(),
-                bgImage: 'assets/pyqs.webp',
-              ),
+            ),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+          child: Row(
+            children: [
+              FloatingActionButton(
+                  backgroundColor: Colors.blue.shade50,
+                  onPressed: () => controller.selectedItem == 0
+                      ? Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => StateBoard()))
+                      : controller.animateToItem(controller.selectedItem - 1,
+                          duration: Duration(seconds: 1),
+                          curve: Curves.easeInOut),
+                  child: Icon(
+                    Icons.chevron_left,
+                    color: Colors.blue,
+                  )),
+              Spacer(),
+              FloatingActionButton(
+                  backgroundColor: Colors.blue.shade50,
+                  onPressed: () => controller.selectedItem == 2
+                      ? Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => PYQs()))
+                      : controller.animateToItem(controller.selectedItem + 1,
+                          duration: Duration(seconds: 1),
+                          curve: Curves.easeInOut),
+                  child: Icon(
+                    Icons.chevron_right,
+                    color: Colors.blue,
+                  )),
             ],
           ),
         ),
-      ),
+      ]),
     );
   }
 }
