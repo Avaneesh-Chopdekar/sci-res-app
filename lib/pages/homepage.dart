@@ -102,6 +102,7 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Row(
             children: [
               FloatingActionButton(
+                  heroTag: 'left',
                   backgroundColor: Colors.blue.shade50,
                   onPressed: () => controller.selectedItem == 0
                       ? Navigator.push(context,
@@ -115,6 +116,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   )),
               Spacer(),
               FloatingActionButton(
+                  heroTag: 'right',
                   backgroundColor: Colors.blue.shade50,
                   onPressed: () => controller.selectedItem == 2
                       ? Navigator.push(context,
