@@ -48,6 +48,14 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    onTap() => currentIndex == 1
+        ? Navigator.push(
+            context, MaterialPageRoute(builder: (context) => JeeBooks()))
+        : currentIndex == 2
+            ? Navigator.push(
+                context, MaterialPageRoute(builder: (context) => PYQs()))
+            : Navigator.push(
+                context, MaterialPageRoute(builder: (context) => StateBoard()));
     return Scaffold(
       appBar: AppBar(
           title: Text('Science Resources'),
@@ -59,79 +67,88 @@ class _MyHomePageState extends State<MyHomePage> {
               icon: const Icon(
                 Icons.info_outline,
               ))),
-      body: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
-        Expanded(
-          child: Center(
-            child: GestureDetector(
-              onTap: () => currentIndex == 1
-                  ? Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => JeeBooks()))
-                  : currentIndex == 2
-                      ? Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => PYQs()))
-                      : Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => StateBoard())),
-              child: ListWheelScrollView(
-                controller: controller,
-                physics: FixedExtentScrollPhysics(),
-                onSelectedItemChanged: (newValue) =>
-                    setState(() => currentIndex = newValue),
-                itemExtent: 250,
-                children: const [
-                  BigCard(
-                    text: 'State',
-                    bgImage: 'assets/stateboard.webp',
-                  ),
-                  BigCard(
-                    text: 'JEE',
-                    bgImage: 'assets/books.webp',
-                  ),
-                  BigCard(
-                    text: 'PYQs',
-                    bgImage: 'assets/pyqs.webp',
-                  ),
-                ],
-              ),
+      body: Center(
+        child: ListWheelScrollView(
+          controller: controller,
+          physics: FixedExtentScrollPhysics(),
+          onSelectedItemChanged: (newValue) =>
+              setState(() => currentIndex = newValue),
+          itemExtent: 250,
+          children: const [
+            BigCard(
+              text: 'State',
+              bgImage: 'assets/stateboard.webp',
             ),
-          ),
+            BigCard(
+              text: 'JEE',
+              bgImage: 'assets/books.webp',
+            ),
+            BigCard(
+              text: 'PYQs',
+              bgImage: 'assets/pyqs.webp',
+            ),
+          ],
         ),
-        Padding(
-          padding: const EdgeInsets.only(bottom: 20, left: 16, right: 16),
-          child: Row(
-            children: [
-              FloatingActionButton(
-                  heroTag: 'left',
-                  backgroundColor: Colors.blue.shade50,
-                  onPressed: () => controller.selectedItem == 0
-                      ? Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => StateBoard()))
-                      : controller.animateToItem(controller.selectedItem - 1,
-                          duration: Duration(seconds: 1),
-                          curve: Curves.easeInOut),
-                  child: Icon(
-                    Icons.chevron_left,
-                    color: Colors.blue,
-                  )),
-              Spacer(),
-              FloatingActionButton(
-                  heroTag: 'right',
-                  backgroundColor: Colors.blue.shade50,
-                  onPressed: () => controller.selectedItem == 2
-                      ? Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => PYQs()))
-                      : controller.animateToItem(controller.selectedItem + 1,
-                          duration: Duration(seconds: 1),
-                          curve: Curves.easeInOut),
-                  child: Icon(
-                    Icons.chevron_right,
-                    color: Colors.blue,
-                  )),
-            ],
-          ),
+      ),
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.only(left: 32),
+        child: Row(
+          children: [
+            FloatingActionButton(
+                tooltip: currentIndex == 0
+                    ? 'Visit State'
+                    : currentIndex == 1
+                        ? 'Select State'
+                        : 'Select Jee',
+                heroTag: 'left',
+                splashColor: Colors.teal.shade100,
+                backgroundColor: Colors.blue.shade50,
+                onPressed: () => controller.selectedItem == 0
+                    ? Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => StateBoard()))
+                    : controller.animateToItem(controller.selectedItem - 1,
+                        duration: Duration(seconds: 1),
+                        curve: Curves.easeInOut),
+                child: Icon(
+                  Icons.chevron_left,
+                  color: Colors.blue,
+                )),
+            Spacer(),
+            FloatingActionButton.extended(
+                heroTag: 'Visit Page',
+                tooltip: currentIndex == 0
+                    ? 'Visit State'
+                    : currentIndex == 1
+                        ? 'Visit Jee'
+                        : 'Visit PYQs',
+                splashColor: Colors.teal.shade100,
+                backgroundColor: Colors.blue.shade50,
+                onPressed: onTap,
+                label:
+                    Text('Visit Page', style: TextStyle(color: Colors.blue))),
+            Spacer(),
+            FloatingActionButton(
+                splashColor: Colors.teal.shade100,
+                tooltip: currentIndex == 2
+                    ? 'Visit PYQs'
+                    : currentIndex == 0
+                        ? 'Select Jee'
+                        : 'Select PYQs',
+                heroTag: 'right',
+                backgroundColor: Colors.blue.shade50,
+                onPressed: () => controller.selectedItem == 2
+                    ? Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => PYQs()))
+                    : controller.animateToItem(controller.selectedItem + 1,
+                        duration: Duration(seconds: 1),
+                        curve: Curves.easeInOut),
+                child: Icon(
+                  Icons.chevron_right,
+                  color: Colors.blue,
+                )),
+          ],
         ),
-      ]),
+      ),
     );
   }
 }
