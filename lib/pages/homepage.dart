@@ -124,8 +124,13 @@ class _MyHomePageState extends State<MyHomePage> {
                 splashColor: Colors.teal.shade100,
                 backgroundColor: Colors.blue.shade50,
                 onPressed: onTap,
-                label:
-                    Text('Visit Page', style: TextStyle(color: Colors.blue))),
+                label: Text(
+                    currentIndex == 0
+                        ? 'Visit State'
+                        : currentIndex == 1
+                            ? 'Visit Jee'
+                            : 'Visit PYQs',
+                    style: TextStyle(color: Colors.blue))),
             Spacer(),
             FloatingActionButton(
                 splashColor: Colors.teal.shade100,

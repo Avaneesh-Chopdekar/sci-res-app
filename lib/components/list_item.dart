@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class ListItem extends StatelessWidget {
@@ -28,40 +29,39 @@ class ListItem extends StatelessWidget {
     final color = _lightColors[index % _lightColors.length];
     return Padding(
       padding: const EdgeInsets.all(10),
-      child: Material(
+      child: CupertinoButton(
+        padding: EdgeInsets.all(16),
         color: color,
         borderRadius: BorderRadius.circular(14),
-        clipBehavior: Clip.antiAliasWithSaveLayer,
-        child: InkWell(
-          splashColor: Colors.black12,
-          onTap: () async {
-            if (!await launchUrl(
-              Uri.parse(url),
-              mode: LaunchMode.externalApplication,
-            )) {
-              throw 'Could not launch ${Uri.parse(url)}';
-            }
-          },
-          child: Padding(
-            padding: const EdgeInsets.all(16),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Container(
-                    width: 20,
-                    height: 20,
-                    child: Image.asset(
-                        'assets/${!isOneDrive ? 'gdrive' : 'onedrive'}.png')),
-                SizedBox(width: 10),
-                Text(
-                  name,
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
-                ),
-                Spacer(),
-                Icon(Icons.chevron_right)
-              ],
+        onPressed: () async {
+          if (!await launchUrl(
+            Uri.parse(url),
+            mode: LaunchMode.externalApplication,
+          )) {
+            throw 'Could not launch ${Uri.parse(url)}';
+          }
+        },
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Container(
+                width: 20,
+                height: 20,
+                child: Image.asset(
+                    'assets/${!isOneDrive ? 'gdrive' : 'onedrive'}.png')),
+            SizedBox(width: 10),
+            Text(
+              name,
+              style: TextStyle(
+                fontFamily: 'Roboto',
+                fontSize: 16,
+                fontWeight: FontWeight.w500,
+                color: Colors.black87,
+              ),
             ),
-          ),
+            Spacer(),
+            Icon(CupertinoIcons.right_chevron, size: 16, color: Colors.black87),
+          ],
         ),
       ),
     );
