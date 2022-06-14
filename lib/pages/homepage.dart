@@ -111,7 +111,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         curve: Curves.easeInOut),
                 child: Icon(
                   Icons.chevron_left,
-                  color: Colors.blue,
+                  color: Colors.blue.shade900,
                 )),
             Spacer(),
             FloatingActionButton.extended(
@@ -130,7 +130,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         : currentIndex == 1
                             ? 'Visit Jee'
                             : 'Visit PYQs',
-                    style: TextStyle(color: Colors.blue))),
+                    style: TextStyle(color: Colors.blue.shade900))),
             Spacer(),
             FloatingActionButton(
                 splashColor: Colors.teal.shade100,
@@ -149,7 +149,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         curve: Curves.easeInOut),
                 child: Icon(
                   Icons.chevron_right,
-                  color: Colors.blue,
+                  color: Colors.blue.shade900,
                 )),
           ],
         ),
