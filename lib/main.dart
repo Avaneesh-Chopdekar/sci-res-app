@@ -13,9 +13,13 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Sci Res',
       debugShowCheckedModeBanner: false,
+      themeMode: ThemeMode.light,
       theme: ThemeData(
         useMaterial3: true,
-        primarySwatch: Colors.blue,
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: Colors.blue,
+          brightness: Brightness.light,
+        ),
       ),
       home: const MyHomePage(),
     );
