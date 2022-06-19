@@ -101,8 +101,6 @@ class _MyHomePageState extends State<MyHomePage> {
                         ? 'Select State'
                         : 'Select Jee',
                 heroTag: 'left',
-                splashColor: Colors.teal.shade100,
-                backgroundColor: Colors.blue.shade50,
                 onPressed: () => controller.selectedItem == 0
                     ? Navigator.push(context,
                         MaterialPageRoute(builder: (context) => StateBoard()))
@@ -111,7 +109,6 @@ class _MyHomePageState extends State<MyHomePage> {
                         curve: Curves.easeInOut),
                 child: Icon(
                   Icons.chevron_left,
-                  color: Colors.blue.shade900,
                 )),
             Spacer(),
             FloatingActionButton.extended(
@@ -121,26 +118,22 @@ class _MyHomePageState extends State<MyHomePage> {
                     : currentIndex == 1
                         ? 'Visit Jee'
                         : 'Visit PYQs',
-                splashColor: Colors.teal.shade100,
-                backgroundColor: Colors.blue.shade50,
                 onPressed: onTap,
                 label: Text(
-                    currentIndex == 0
-                        ? 'Visit State'
-                        : currentIndex == 1
-                            ? 'Visit Jee'
-                            : 'Visit PYQs',
-                    style: TextStyle(color: Colors.blue.shade900))),
+                  currentIndex == 0
+                      ? 'Visit State'
+                      : currentIndex == 1
+                          ? 'Visit Jee'
+                          : 'Visit PYQs',
+                )),
             Spacer(),
             FloatingActionButton(
-                splashColor: Colors.teal.shade100,
                 tooltip: currentIndex == 2
                     ? 'Visit PYQs'
                     : currentIndex == 0
                         ? 'Select Jee'
                         : 'Select PYQs',
                 heroTag: 'right',
-                backgroundColor: Colors.blue.shade50,
                 onPressed: () => controller.selectedItem == 2
                     ? Navigator.push(context,
                         MaterialPageRoute(builder: (context) => PYQs()))
@@ -149,7 +142,6 @@ class _MyHomePageState extends State<MyHomePage> {
                         curve: Curves.easeInOut),
                 child: Icon(
                   Icons.chevron_right,
-                  color: Colors.blue.shade900,
                 )),
           ],
         ),
