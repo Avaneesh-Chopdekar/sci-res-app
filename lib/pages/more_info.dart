@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class MoreInfo extends StatelessWidget {
   const MoreInfo({Key? key}) : super(key: key);
@@ -15,7 +16,9 @@ class MoreInfo extends StatelessWidget {
       'This app is made by Avaneesh Chopdekar.',
     ];
     return Scaffold(
-      appBar: AppBar(title: Text('More Info')),
+      appBar: AppBar(
+          title: Text('More Info',
+              style: GoogleFonts.poppins(fontWeight: FontWeight.w500))),
       body: Padding(
         padding: const EdgeInsets.all(4),
         child: ListView.builder(

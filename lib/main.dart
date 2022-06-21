@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       if (lightDynamic != null) {
         lightColorScheme = lightDynamic.harmonized()..copyWith();
       } else {
-        lightColorScheme = ColorScheme.fromSeed(seedColor: Colors.blue);
+        lightColorScheme = ColorScheme.fromSeed(seedColor: Color(0xFFDDE1E7));
       }
       return MaterialApp(
         title: 'Sci Res',

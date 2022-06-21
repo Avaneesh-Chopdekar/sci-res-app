@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'maths_jeebooks.dart';
 import 'phy_jeebooks.dart';
 import 'chem_jeebooks.dart';
@@ -23,11 +24,13 @@ class _JeeBooksState extends State<JeeBooks> {
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
-            title: Text(currentIndex == 0
-                ? 'Physics JEE Books'
-                : currentIndex == 1
-                    ? 'Chemistry JEE Books'
-                    : 'Maths JEE Books')),
+            title: Text(
+                currentIndex == 0
+                    ? 'Physics JEE Books'
+                    : currentIndex == 1
+                        ? 'Chemistry JEE Books'
+                        : 'Maths JEE Books',
+                style: GoogleFonts.poppins(fontWeight: FontWeight.w500))),
         bottomNavigationBar: NavigationBar(
             onDestinationSelected: ((index) => setState(() {
                   currentIndex = index;

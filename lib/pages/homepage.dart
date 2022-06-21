@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:quick_actions/quick_actions.dart';
 import 'jeebooks/jeebooks.dart';
 import 'stateboard/stateboard.dart';
@@ -58,7 +59,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 context, MaterialPageRoute(builder: (context) => StateBoard()));
     return Scaffold(
       appBar: AppBar(
-          title: Text('Science Resources'),
+          title: Text('Science Resources',
+              style: GoogleFonts.poppins(fontWeight: FontWeight.w500)),
           centerTitle: true,
           leading: IconButton(
               tooltip: 'More Info',
