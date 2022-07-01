@@ -17,6 +17,7 @@ class _PhyJeeBooksState extends State<PhyJeeBooks> {
     'DC Pandey Part 3',
     'DC Pandey Part 4',
     'DC Pandey Part 5',
+    'I.E.Irodov',
   ];
   final List urls = [
     'https://1drv.ms/b/s!AmuzjkvH34D_a4teYsdw7KK-TnM?e=jb3QJ3', // HC Verma 1
@@ -26,6 +27,7 @@ class _PhyJeeBooksState extends State<PhyJeeBooks> {
     'https://drive.google.com/file/d/1yYeNbZ_XWDcv_3dkrP9Z3CAFCW13KCAE/view', // DC Pandey 3
     'https://drive.google.com/file/d/1_Bni1_V-TJgpHmLyblcKBUClJHgJx4Bb/view', // DC Pandey 4
     'https://drive.google.com/file/d/1I4r8ykLCrQGagn4Vg78E0YttJfFTTl8Y/view', // DC Pandey 5
+    'https://drive.google.com/file/d/1g8srZWCaO3ECrUxaWJSE8StTvY7quum3/view', // I.E.Irodov
   ];
   final List<bool> subtitle = <bool>[
     true,
@@ -35,6 +37,7 @@ class _PhyJeeBooksState extends State<PhyJeeBooks> {
     false,
     false,
     false,
+    false
   ];
   @override
   Widget build(BuildContext context) => ListView.builder(
