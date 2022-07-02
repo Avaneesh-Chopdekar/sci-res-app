@@ -2,8 +2,7 @@
 
 ![Sci Res Logo](assets/sci_logo_splash.png)
 
-**Made with Flutter 3**
-[What's Flutter](https://flutter.dev/)
+**Made with [Flutter](https://flutter.dev/)**
 
 I made this app so I can have all of these books on the go.
 
