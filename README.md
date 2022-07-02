@@ -1,6 +1,6 @@
 # Science Resources
 
-![Sci Res Logo](assets/sci_logo_splash.png)
+![Sci Res Logo](https://scienceresourcesjee.tk/sci_books_logo.png)
 
 **Made with [Flutter](https://flutter.dev/)**
 
