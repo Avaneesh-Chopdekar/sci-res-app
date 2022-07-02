@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import '../pyqs/chem_pyqs.dart';
 import '../pyqs/maths_pyqs.dart';
 import '../pyqs/phy_pyqs.dart';
@@ -25,13 +24,11 @@ class _PYQsState extends State<PYQs> {
   @override
   Widget build(BuildContext context) => Scaffold(
       appBar: AppBar(
-          title: Text(
-              currentIndex == 0
-                  ? 'Physics JEE PYQs'
-                  : currentIndex == 1
-                      ? 'Chemistry JEE PYQs'
-                      : 'Maths JEE PYQs',
-              style: GoogleFonts.poppins(fontWeight: FontWeight.w500))),
+          title: Text(currentIndex == 0
+              ? 'Physics JEE PYQs'
+              : currentIndex == 1
+                  ? 'Chemistry JEE PYQs'
+                  : 'Maths JEE PYQs')),
       bottomNavigationBar: NavigationBar(
           onDestinationSelected: ((index) {
             setState(() => currentIndex = index);

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'eleven_state.dart';
 import 'twelve_state.dart';
 
@@ -24,11 +23,9 @@ class _StateBoardState extends State<StateBoard> {
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
-            title: Text(
-                currentIndex == 0
-                    ? '11th Stateboard Books'
-                    : '12th Stateboard Books',
-                style: GoogleFonts.poppins(fontWeight: FontWeight.w500))),
+            title: Text(currentIndex == 0
+                ? '11th Stateboard Books'
+                : '12th Stateboard Books')),
         bottomNavigationBar: NavigationBar(
             onDestinationSelected: ((index) => setState(() {
                   currentIndex = index;

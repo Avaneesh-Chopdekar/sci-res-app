@@ -23,10 +23,16 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         themeMode: ThemeMode.light,
         theme: ThemeData(
-          useMaterial3: true,
-          brightness: Brightness.light,
-          colorScheme: lightColorScheme,
-        ),
+            useMaterial3: true,
+            brightness: Brightness.light,
+            colorScheme: lightColorScheme,
+            appBarTheme: const AppBarTheme(
+              titleTextStyle: TextStyle(
+                fontFamily: 'Poppins',
+                color: Colors.black,
+                fontSize: 21,
+              ),
+            )),
         home: const MyHomePage(),
       );
     });
