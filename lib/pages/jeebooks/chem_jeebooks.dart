@@ -27,7 +27,7 @@ class _ChemJeeBooksState extends State<ChemJeeBooks> {
     'https://drive.google.com/file/d/1fciOkvocr3cgIzmRWLzlF3bBz6ts6rOX/view', // V K Jaiswal 1
     'https://drive.google.com/file/d/1LtPwWqEXrH5B5Lguis9zqZ6U-9omKWY2/view', // V K Jaiswal 2
   ];
-  final bools = [true, false, false, true, false, false, false];
+  final bools = [true, false, false, false, false, false, false];
   @override
   Widget build(BuildContext context) => ListView.builder(
       itemCount: bookNames.length,
