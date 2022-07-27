@@ -40,8 +40,7 @@ class _MathsPyqsState extends State<MathsPyqs> {
     'Sets and Relations',
     'Statistics',
     'Straight Lines',
-    '''Trigonometric Equations and 
-Inequations''',
+    'Trigonometric Equations and Inequations',
     'Trigonometric Ratios and Identities',
     'Vector 3D',
     'Vector Algebra',
