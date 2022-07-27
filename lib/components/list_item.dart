@@ -47,22 +47,23 @@ class ListItem extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Container(
+                SizedBox(
                     width: 20,
                     height: 20,
                     child: Image.asset(
                         'assets/${!isOneDrive ? 'gdrive' : 'onedrive'}.png')),
-                SizedBox(width: 10),
-                Text(
-                  name,
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w500,
-                    color: Colors.black87,
+                const SizedBox(width: 10),
+                Expanded(
+                  child: Text(
+                    name,
+                    style: const TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500,
+                      color: Colors.black87,
+                    ),
                   ),
                 ),
-                Spacer(),
-                Icon(Icons.chevron_right, color: Colors.black87),
+                const Icon(Icons.chevron_right, color: Colors.black87),
               ],
             ),
           ),
