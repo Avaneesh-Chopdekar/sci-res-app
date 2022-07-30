@@ -34,16 +34,29 @@ class _StateBoardState extends State<StateBoard> {
                       duration: const Duration(milliseconds: 300));
                 })),
             selectedIndex: currentIndex,
-            destinations: const [
+            destinations: [
               NavigationDestination(
-                  icon: Icon(Icons.child_care), label: '11th'),
-              NavigationDestination(icon: Icon(Icons.elderly), label: '12th'),
+                icon: Icon(
+                  currentIndex == 0
+                      ? Icons.sentiment_satisfied_outlined
+                      : Icons.sentiment_satisfied,
+                ),
+                label: '11th',
+              ),
+              NavigationDestination(
+                icon: Icon(
+                  currentIndex == 1
+                      ? Icons.sentiment_dissatisfied_outlined
+                      : Icons.sentiment_dissatisfied,
+                ),
+                label: '12th',
+              ),
             ]),
         body: PageView(
-          children: pages,
-          onPageChanged: (page_index) =>
-              setState(() => currentIndex = page_index),
+          onPageChanged: (pageIndex) =>
+              setState(() => currentIndex = pageIndex),
           controller: controller,
+          children: pages,
         ),
       );
 }
