@@ -16,24 +16,26 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   late FixedExtentScrollController controller;
   int currentIndex = 1;
+  @override
   void initState() {
     super.initState();
-    QuickActions().setShortcutItems([
-      ShortcutItem(type: 'jee-books', localizedTitle: 'Jee Books'),
-      ShortcutItem(type: 'state-books', localizedTitle: 'Stateboard Books'),
-      ShortcutItem(type: 'pyqs', localizedTitle: 'PYQs')
+    const QuickActions().setShortcutItems([
+      const ShortcutItem(type: 'jee-books', localizedTitle: 'Jee Books'),
+      const ShortcutItem(
+          type: 'state-books', localizedTitle: 'Stateboard Books'),
+      const ShortcutItem(type: 'pyqs', localizedTitle: 'PYQs')
     ]);
-    QuickActions().initialize(
+    const QuickActions().initialize(
       (type) {
         if (type == 'jee-books') {
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => JeeBooks()));
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => const JeeBooks()));
         } else if (type == 'state-books') {
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => StateBoard()));
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => const StateBoard()));
         } else if (type == 'pyqs') {
           Navigator.push(
-              context, MaterialPageRoute(builder: (context) => PYQs()));
+              context, MaterialPageRoute(builder: (context) => const PYQs()));
         }
       },
     );
@@ -50,15 +52,15 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     onTap() => currentIndex == 1
         ? Navigator.push(
-            context, MaterialPageRoute(builder: (context) => JeeBooks()))
+            context, MaterialPageRoute(builder: (context) => const JeeBooks()))
         : currentIndex == 2
             ? Navigator.push(
-                context, MaterialPageRoute(builder: (context) => PYQs()))
-            : Navigator.push(
-                context, MaterialPageRoute(builder: (context) => StateBoard()));
+                context, MaterialPageRoute(builder: (context) => const PYQs()))
+            : Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const StateBoard()));
     return Scaffold(
       appBar: AppBar(
-          title: Text('Science Resources'),
+          title: const Text('Science Resources'),
           centerTitle: true,
           leading: IconButton(
               tooltip: 'More Info',
@@ -70,13 +72,13 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
         child: ListWheelScrollView(
           controller: controller,
-          physics: FixedExtentScrollPhysics(),
+          physics: const FixedExtentScrollPhysics(),
           onSelectedItemChanged: (newValue) =>
               setState(() => currentIndex = newValue),
           itemExtent: 250,
           children: const [
             BigCard(
-              text: 'State',
+              text: 'Boards',
               bgImage: 'assets/stateboard.webp',
             ),
             BigCard(
@@ -96,37 +98,39 @@ class _MyHomePageState extends State<MyHomePage> {
           children: [
             FloatingActionButton(
                 tooltip: currentIndex == 0
-                    ? 'Visit State'
+                    ? 'Visit Boards'
                     : currentIndex == 1
-                        ? 'Select State'
+                        ? 'Select Boards'
                         : 'Select Jee',
                 heroTag: 'left',
                 onPressed: () => controller.selectedItem == 0
-                    ? Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => StateBoard()))
+                    ? Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const StateBoard()))
                     : controller.animateToItem(controller.selectedItem - 1,
-                        duration: Duration(seconds: 1),
+                        duration: const Duration(seconds: 1),
                         curve: Curves.easeInOut),
-                child: Icon(
+                child: const Icon(
                   Icons.chevron_left,
                 )),
-            Spacer(),
+            const Spacer(),
             FloatingActionButton.extended(
                 heroTag: 'Visit Page',
                 tooltip: currentIndex == 0
-                    ? 'Visit State'
+                    ? 'Visit Boards'
                     : currentIndex == 1
                         ? 'Visit Jee'
                         : 'Visit PYQs',
                 onPressed: onTap,
                 label: Text(
                   currentIndex == 0
-                      ? 'Visit State'
+                      ? 'Visit Boards'
                       : currentIndex == 1
                           ? 'Visit Jee'
                           : 'Visit PYQs',
                 )),
-            Spacer(),
+            const Spacer(),
             FloatingActionButton(
                 tooltip: currentIndex == 2
                     ? 'Visit PYQs'
@@ -136,11 +140,11 @@ class _MyHomePageState extends State<MyHomePage> {
                 heroTag: 'right',
                 onPressed: () => controller.selectedItem == 2
                     ? Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => PYQs()))
+                        MaterialPageRoute(builder: (context) => const PYQs()))
                     : controller.animateToItem(controller.selectedItem + 1,
-                        duration: Duration(seconds: 1),
+                        duration: const Duration(seconds: 1),
                         curve: Curves.easeInOut),
-                child: Icon(
+                child: const Icon(
                   Icons.chevron_right,
                 )),
           ],
