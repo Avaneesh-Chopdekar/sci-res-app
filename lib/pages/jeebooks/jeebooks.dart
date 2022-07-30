@@ -13,7 +13,11 @@ class JeeBooks extends StatefulWidget {
 class _JeeBooksState extends State<JeeBooks> {
   int currentIndex = 0;
   PageController controller = PageController();
-  List<Widget> pages = [PhyJeeBooks(), ChemJeeBooks(), MathsJeeBooks()];
+  List<Widget> pages = [
+    const PhyJeeBooks(),
+    const ChemJeeBooks(),
+    const MathsJeeBooks()
+  ];
   @override
   void dispose() {
     controller.dispose();
@@ -36,17 +40,35 @@ class _JeeBooksState extends State<JeeBooks> {
                       duration: const Duration(milliseconds: 300));
                 })),
             selectedIndex: currentIndex,
-            destinations: const [
-              NavigationDestination(icon: Icon(Icons.bolt), label: 'Physics'),
+            destinations: [
               NavigationDestination(
-                  icon: Icon(Icons.science_outlined), label: 'Chemistry'),
+                icon: Icon(
+                  currentIndex == 0
+                      ? Icons.perm_data_setting
+                      : Icons.perm_data_setting_outlined,
+                ),
+                label: 'Physics',
+              ),
               NavigationDestination(
-                  icon: Icon(Icons.functions), label: 'Maths'),
+                icon: Icon(
+                  currentIndex == 1 ? Icons.science : Icons.science_outlined,
+                ),
+                label: 'Chemistry',
+              ),
+              NavigationDestination(
+                icon: Icon(
+                  currentIndex == 2
+                      ? Icons.calculate
+                      : Icons.calculate_outlined,
+                ),
+                label: 'Maths',
+              ),
             ]),
         body: PageView(
-            children: pages,
-            controller: controller,
-            onPageChanged: (page_index) =>
-                setState(() => currentIndex = page_index)),
+          controller: controller,
+          onPageChanged: (pageIndex) =>
+              setState(() => currentIndex = pageIndex),
+          children: pages,
+        ),
       );
 }
