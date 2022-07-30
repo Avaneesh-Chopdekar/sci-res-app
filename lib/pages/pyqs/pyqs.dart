@@ -11,7 +11,7 @@ class PYQs extends StatefulWidget {
 }
 
 class _PYQsState extends State<PYQs> {
-  List<Widget> pages = [PhyPyqs(), ChemPyqs(), MathsPyqs()];
+  List<Widget> pages = [const PhyPyqs(), const ChemPyqs(), const MathsPyqs()];
   int currentIndex = 0;
   PageController controller = PageController();
 
@@ -37,15 +37,31 @@ class _PYQsState extends State<PYQs> {
                 duration: const Duration(milliseconds: 300));
           }),
           selectedIndex: currentIndex,
-          destinations: const [
-            NavigationDestination(icon: Icon(Icons.bolt), label: 'Physics'),
+          destinations: [
             NavigationDestination(
-                icon: Icon(Icons.science_outlined), label: 'Chemistry'),
-            NavigationDestination(icon: Icon(Icons.functions), label: 'Maths'),
+              icon: Icon(
+                currentIndex == 0
+                    ? Icons.perm_data_setting
+                    : Icons.perm_data_setting_outlined,
+              ),
+              label: 'Physics',
+            ),
+            NavigationDestination(
+              icon: Icon(
+                currentIndex == 1 ? Icons.science : Icons.science_outlined,
+              ),
+              label: 'Chemistry',
+            ),
+            NavigationDestination(
+              icon: Icon(
+                currentIndex == 2 ? Icons.calculate : Icons.calculate_outlined,
+              ),
+              label: 'Maths',
+            ),
           ]),
       body: PageView(
-          children: pages,
-          onPageChanged: (page_index) =>
-              setState(() => currentIndex = page_index),
-          controller: controller));
+        onPageChanged: (pageIndex) => setState(() => currentIndex = pageIndex),
+        controller: controller,
+        children: pages,
+      ));
 }
