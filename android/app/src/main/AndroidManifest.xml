@@ -23,7 +23,7 @@
     </intent>
     </queries>
    <application
-        android:label="Sci Res"
+        android:label="Scires"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher"
         android:usesCleartextTraffic = "true">
