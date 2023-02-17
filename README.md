@@ -1,6 +1,6 @@
 # Science Resources
 
-![Sci Res Logo](https://scienceresourcesjee.tk/sci_books_logo.png)
+![Sci Res Logo](https://github.com/Avaneesh-Chopdekar/sci-res-web/raw/main/logo.png)
 
 **Made with [Flutter](https://flutter.dev/)**
 
